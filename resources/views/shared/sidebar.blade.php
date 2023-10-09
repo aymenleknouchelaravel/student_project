@@ -52,6 +52,12 @@
                     </ul>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/message">
+                    <span class="menu-title">Send Message</span>
+                    <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                </a>
+            </li>
         @else
             <li class="nav-item">
                 <a class="nav-link" href="/admin/home">
@@ -59,6 +65,13 @@
                     <i class="mdi mdi-crosshairs-gps menu-icon"></i>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/client/message">
+                    <span class="menu-title">Send Message</span>
+                    <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                </a>
+            </li>
         @endif
+        
     </ul>
 </nav>

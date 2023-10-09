@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class AdminController extends Controller
     {
         $users = User::all();
         $projects = Project::all();
-        return view('admin.home' , compact('users' , 'projects'));
+        return view('admin.home', compact('users', 'projects'));
     }
 
     public function users()
@@ -35,7 +36,7 @@ class AdminController extends Controller
     public function addproject()
     {
         $users = User::all();
-        return view('admin.addproject' , compact('users'));
+        return view('admin.addproject', compact('users'));
     }
 
     public function adduserform(Request $request)
@@ -90,4 +91,32 @@ class AdminController extends Controller
         $user->delete();
         return redirect()->route("admin.users");
     }
+
+    public function sendmessageform(Request $request)
+    {
+        $request->validate([
+            'project' => 'required',
+            'title' => 'required',
+            'text' => 'required',
+        ]);
+
+        $message = new Message();
+        $message->project_id = $request->project;
+        $message->title = $request->title;
+        $message->text = $request->text;
+        $message->user_id = auth()->user()->id;
+        if ($request->file('file') != null) {
+            $path = $request->file('file')->store('images', ['disk' => 'public']);
+            $message->file = $path;
+        }
+        $message->save();
+        return redirect()->route('admin.message');
+    }
+
+    public function message(Request $request)
+    {
+        $projects = Project::all();
+        return view("admin.message", compact('projects'));
+    }
+
 }

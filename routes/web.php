@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BothControlller;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
@@ -43,14 +44,19 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/addproject', [AdminController::class, 'addproject'])->name('admin.addproject');
         Route::post('/admin/addprojectform', [AdminController::class, 'addprojectform'])->name('admin.addprojectform');
         Route::post('/admin/deleteproject/{id}', [AdminController::class, 'deleteproject'])->name('admin.deleteproject');
+        Route::get('/admin/message', [AdminController::class, 'message'])->name('admin.message');
+        Route::post('/admin/sendmessageform', [AdminController::class, 'sendmessageform'])->name('admin.sendmessageform');
     });
 
     Route::middleware(['user'])->group(function () {
         Route::post('/admin/deleteproject/{id}', [AdminController::class, 'deleteproject'])->name('admin.deleteproject');
         Route::get('/client/home', [ClientController::class, 'home'])->name('client.home');
         Route::get('/client/myprojects', [ClientController::class, 'myprojects'])->name('client.myprojects');
+        Route::get('/client/message', [ClientController::class, 'message'])->name('client.message');
+        Route::post('/client/sendmessageform', [ClientController::class, 'sendmessageform'])->name('client.sendmessageform');
     });
 
     //Logout
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
 });
