@@ -28,9 +28,9 @@
                 </a>
                 <div class="collapse" id="ui-basic">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">New User</a>
+                        <li class="nav-item"> <a class="nav-link" href="/admin/adduser">New User</a>
                         </li>
-                        <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">All Users</a>
+                        <li class="nav-item"> <a class="nav-link" href="/admin/users">All Users</a>
                         </li>
                     </ul>
                 </div>
@@ -44,9 +44,9 @@
                 </a>
                 <div class="collapse" id="ui-basic2">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">New Project</a>
+                        <li class="nav-item"> <a class="nav-link" href="/admin/addproject">New Project</a>
                         </li>
-                        <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">All
+                        <li class="nav-item"> <a class="nav-link" href="/admin/projects">All
                                 Projects</a>
                         </li>
                     </ul>
@@ -55,14 +55,8 @@
         @else
             <li class="nav-item">
                 <a class="nav-link" href="/admin/home">
-                    <span class="menu-title">Dashboard</span>
-                    <i class="mdi mdi-home menu-icon"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/admin/home">
                     <span class="menu-title">My Projects</span>
-                    <i class="mdi mdi-home menu-icon"></i>
+                    <i class="mdi mdi-crosshairs-gps menu-icon"></i>
                 </a>
             </li>
         @endif

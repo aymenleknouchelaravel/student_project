@@ -36,17 +36,19 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
         Route::get('/admin/adduser', [AdminController::class, 'adduser'])->name('admin.adduser');
         Route::post('/admin/adduserform', [AdminController::class, 'adduserform'])->name('admin.adduserform');
-        Route::post('/admin/deleteuser', [AdminController::class, 'deleteuser'])->name('admin.deleteuser');
+        Route::post('/admin/deleteuser/{id}', [AdminController::class, 'deleteuser'])->name('admin.deleteuser');
 
         //projects
         Route::get('/admin/projects', [AdminController::class, 'projects'])->name('admin.projects');
         Route::get('/admin/addproject', [AdminController::class, 'addproject'])->name('admin.addproject');
         Route::post('/admin/addprojectform', [AdminController::class, 'addprojectform'])->name('admin.addprojectform');
-        Route::post('/admin/deleteproject', [AdminController::class, 'deleteproject'])->name('admin.deleteproject');
+        Route::post('/admin/deleteproject/{id}', [AdminController::class, 'deleteproject'])->name('admin.deleteproject');
     });
 
     Route::middleware(['user'])->group(function () {
+        Route::post('/admin/deleteproject/{id}', [AdminController::class, 'deleteproject'])->name('admin.deleteproject');
         Route::get('/client/home', [ClientController::class, 'home'])->name('client.home');
+        Route::get('/client/myprojects', [ClientController::class, 'myprojects'])->name('client.myprojects');
     });
 
     //Logout

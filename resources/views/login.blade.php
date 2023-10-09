@@ -22,7 +22,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             <div class="mb-4">
-                                <h3>Sign In to <strong class="web-name">Website Name</strong></h3>
+                                <h3>Sign In to <strong class="web-name">DEP</strong></h3>
                             </div>
                             @include('shared.errors')
 

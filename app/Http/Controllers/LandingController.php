@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Email;
+use App\Models\Project;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
 {
-    
+
     public function welcome()
     {
         if (config('app.coming_soon')) {
             return view('coming_soon');
         }
-        return view('welcome');
+        $projects = Project::all();
+        $users = User::all();
+        return view('welcome', compact('projects' , 'users'));
     }
 
     public function store(Request $request)
