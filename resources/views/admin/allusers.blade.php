@@ -28,26 +28,29 @@
                         </thead>
                         <tbody>
                             @foreach ($users as $user)
-                                <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->surname }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>
-                                        <form class="btn p-0" action="/admin/deleteuser/{{ $user->id }}" method="post">
-                                            @csrf
-                                            <button type="submit" class="btn btn-inverse-danger btn-icon">
-                                                <i class="mdi mdi-delete-empty"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                @if ($user->role != 'admin')
+                                    <tr>
+                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->surname }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>
+                                            <form class="btn p-0" action="/admin/deleteuser/{{ $user->id }}"
+                                                method="post">
+                                                @csrf
+                                                <button type="submit" class="btn btn-inverse-danger btn-icon">
+                                                    <i class="mdi mdi-delete-empty"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div>  
+        </div>
     </div>
 @endsection
 

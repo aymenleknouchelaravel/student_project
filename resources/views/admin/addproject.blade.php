@@ -24,7 +24,10 @@
                             <div class="col-sm-9">
                                 <select name="user_id" class="form-control form-control-sm" id="exampleInput4">
                                     @foreach ($users as $user)
-                                        <option value={{ $user->id }}>{{ $user->surname }} {{ $user->name }}</option>
+                                        @if ($user->role != 'admin')
+                                            <option value={{ $user->id }}>{{ $user->surname }} {{ $user->name }}
+                                            </option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>

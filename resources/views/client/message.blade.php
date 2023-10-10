@@ -53,7 +53,42 @@
                     </form>
                 </div>
             </div>
-            {{-- {{$messages}} --}}
+            
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                Send By Me
+                @foreach (auth()->user()->messages as $message)
+                    <div class="card mt-2">
+                        <div class="card-body">
+                            <h3>{{ $message->project->name }}</h3>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ $message->title }}</h6>
+                            <p class="card-text">{{ $message->text }}</p>
+                            @if ($message->file != null)
+                                <a class="btn btn-success" href='/admin/file/{{ $message->id }}'>Download File</a>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="col-md-6">
+                Received
+                @foreach ($messagesInProjects as $message)
+                    @if ($message->user->role == 'admin')
+                        <div class="card mt-2">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $message->user->name }}</h5>
+                                <h3>{{ $message->project->name }}</h3>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ $message->title }}</h6>
+                                <p class="card-text">{{ $message->text }}</p>
+                                @if ($message->file != null)
+                                    <a class="btn btn-success" href='/admin/file/{{ $message->id }}'>Download File</a>
+                                @endif
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
         </div>
     </div>
 @endsection

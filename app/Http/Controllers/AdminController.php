@@ -65,6 +65,17 @@ class AdminController extends Controller
             'name' => 'required',
             'sf_adresse' => 'required',
             'sf_name' => 'required',
+            'project_adresse' => 'required',
+            'contractor_name' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'book_term' => 'required',
+            'commercial_reg_date' => 'required',
+            'choice_land' => 'required',
+            'amount' => 'required',
+            'commercial_reg_no' => 'required',
+            'bank_account_no' => 'required',
+            'project_code' => 'required',
         ]);
 
         $project = new Project();
@@ -116,7 +127,19 @@ class AdminController extends Controller
     public function message(Request $request)
     {
         $projects = Project::all();
-        return view("admin.message", compact('projects'));
+        $messages = auth()->user()->messages;
+        $allmessages = Message::all();
+        return view("admin.message", compact('projects', 'messages' , 'allmessages'));
+    }
+
+    public function file($id)
+    {
+        $file = Message::find($id);
+        $file = public_path('storage/' . $file->file);
+        if (file_exists($file)) {
+            return response()->download($file);
+        }
+
     }
 
 }

@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/adduser', [AdminController::class, 'adduser'])->name('admin.adduser');
         Route::post('/admin/adduserform', [AdminController::class, 'adduserform'])->name('admin.adduserform');
         Route::post('/admin/deleteuser/{id}', [AdminController::class, 'deleteuser'])->name('admin.deleteuser');
+        Route::get('/admin/file/{id}', [AdminController::class, 'file'])->name('admin.file');
 
         //projects
         Route::get('/admin/projects', [AdminController::class, 'projects'])->name('admin.projects');

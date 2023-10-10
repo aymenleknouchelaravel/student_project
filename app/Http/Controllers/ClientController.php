@@ -37,8 +37,20 @@ class ClientController extends Controller
 
     public function message(Request $request)
     {
-        $projects = Project::where("user_id", auth()->user()->id)->get();
-        return view("client.message", compact('projects'));
+        $messagesInProjects = [];
+
+        $allmessages = Message::all();
+        $projects = auth()->user()->projects;
+        $messages = Message::all();
+        foreach ($allmessages as $message) {
+            foreach ($projects as $project) {
+                if ($message->project_id == $project->id) {
+                    $messagesInProjects[] = $message;
+                }
+            }
+        }
+        return view("client.message", compact('projects', 'messagesInProjects'));
     }
+
 
 }
