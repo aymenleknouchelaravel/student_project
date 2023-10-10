@@ -20,7 +20,6 @@ return new class extends Migration {
             $table->enum("status", ['active', 'non_active'])->default('non_active');
             $table->string("sf_adresse");
             $table->string("sf_name");
-            
             $table->string("project_adresse");
             $table->string("contractor_name");
             $table->date("start_date");
@@ -32,7 +31,6 @@ return new class extends Migration {
             $table->integer("commercial_reg_no");
             $table->integer("bank_account_no");
             $table->integer("project_code");
-      
             $table->timestamps();
         });
     }

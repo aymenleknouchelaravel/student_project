@@ -83,6 +83,18 @@ class AdminController extends Controller
         $project->name = $request->name;
         $project->sf_adresse = $request->sf_adresse;
         $project->sf_name = $request->sf_name;
+        $project->project_adresse = $request->project_adresse;
+        $project->contractor_name = $request->contractor_name;
+        $project->start_date = $request->start_date;
+        $project->start_date = $request->start_date;
+        $project->end_date = $request->end_date;
+        $project->book_term = $request->book_term;
+        $project->commercial_reg_date = $request->commercial_reg_date;
+        $project->choice_land = $request->choice_land;
+        $project->amount = $request->amount;
+        $project->commercial_reg_no = $request->commercial_reg_no;
+        $project->bank_account_no = $request->bank_account_no;
+        $project->project_code = $request->project_code;
         $project->save();
 
 
@@ -129,7 +141,7 @@ class AdminController extends Controller
         $projects = Project::all();
         $messages = auth()->user()->messages;
         $allmessages = Message::all();
-        return view("admin.message", compact('projects', 'messages' , 'allmessages'));
+        return view("admin.message", compact('projects', 'messages', 'allmessages'));
     }
 
     public function file($id)

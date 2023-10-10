@@ -52,5 +52,18 @@ class ClientController extends Controller
         return view("client.message", compact('projects', 'messagesInProjects'));
     }
 
+    public function changestate($id)
+    {
+        $project = Project::find($id);
+        if ($project->status == 'active') {
+            $project->status = 'non_active';
+        } else {
+            $project->status = 'active';
+        }
+        
+        $project->save();
+        return redirect()->route("admin.projects");
+    }
+
 
 }

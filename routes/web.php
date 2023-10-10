@@ -55,6 +55,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/client/myprojects', [ClientController::class, 'myprojects'])->name('client.myprojects');
         Route::get('/client/message', [ClientController::class, 'message'])->name('client.message');
         Route::post('/client/sendmessageform', [ClientController::class, 'sendmessageform'])->name('client.sendmessageform');
+        Route::post('/client/changestate/{id}', [ClientController::class, 'changestate'])->name('client.changestate');
     });
 
     //Logout

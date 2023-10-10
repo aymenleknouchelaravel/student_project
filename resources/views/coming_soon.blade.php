@@ -29,7 +29,7 @@
 					<div class="coming-soon-box">
   
 						<div class="logo">
-							<h1>Website Name</h1>
+							<h1>DEP</h1>
 						</div>
   
   

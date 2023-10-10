@@ -24,6 +24,16 @@
                                 <th>Status</th>
                                 <th>sf_adresse</th>
                                 <th>sf_name</th>
+                                <th>project_adresse</th>
+                                <th>contractor_name</th>
+                                <th>start_date</th>
+                                <th>end_date</th>
+                                <th>book_term</th>
+                                <th>commercial_reg_date</th>
+                                <th>amount</th>
+                                <th>commercial_reg_no</th>
+                                <th>bank_account_no</th>
+                                <th>project_code</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,7 +45,24 @@
                                     <td>{{ $project->status }}</td>
                                     <td>{{ $project->sf_adresse }}</td>
                                     <td>{{ $project->sf_name }}</td>
+                                    <td>{{ $project->project_adresse }}</td>
+                                    <td>{{ $project->contractor_name }}</td>
+                                    <td>{{ $project->start_date }}</td>
+                                    <td>{{ $project->end_date }}</td>
+                                    <td>{{ $project->book_term }}</td>
+                                    <td>{{ $project->commercial_reg_date }}</td>
+                                    <td>{{ $project->amount }}</td>
+                                    <td>{{ $project->commercial_reg_no }}</td>
+                                    <td>{{ $project->bank_account_no }}</td>
+                                    <td>{{ $project->project_code }}</td>
                                     <td>
+                                        <form class="btn p-0" action="/client/changestate/{{ $project->id }}"
+                                            method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-inverse-primary btn-icon">
+                                                <i class="mdi mdi-power"></i>
+                                            </button>
+                                        </form>
                                         <form class="btn p-0" action="/admin/deleteproject/{{ $project->id }}"
                                             method="post">
                                             @csrf
